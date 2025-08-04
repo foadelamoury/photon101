@@ -2694,6 +2694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 368991476657380362}
   - component: {fileID: 6738665258329150475}
+  - component: {fileID: 8788791857811553470}
   m_Layer: 0
   m_Name: arms@ak
   m_TagString: Untagged
@@ -2738,6 +2739,18 @@ MonoBehaviour:
   damage: 25
   fireRate: 10
   hitVFX: {fileID: 2708598583397607911, guid: 6398d43fe79ea0140913dc5530c646af, type: 3}
+--- !u!114 &8788791857811553470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8096979962601438451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21652897a597e6949b1faea68b61ade8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8371434961057322092
 GameObject:
   m_ObjectHideFlags: 0
