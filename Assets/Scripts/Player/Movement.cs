@@ -79,8 +79,11 @@ public class Movement : MonoBehaviour
             else
             {
                 Vector3 velocity1 = rb.linearVelocity;
-
-                velocity1 = new Vector3(velocity1.x * .2f * Time.fixedDeltaTime, velocity1.y, velocity1.z * .2f * Time.fixedDeltaTime);
+                velocity1 = new Vector3(
+                    velocity1.x * 0.2f, // Remove Time.fixedDeltaTime
+                    velocity1.y,
+                    velocity1.z * 0.2f
+                );
 
                 rb.linearVelocity = velocity1;
 

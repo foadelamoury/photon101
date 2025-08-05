@@ -12,6 +12,10 @@ public class PlayerSetup : MonoBehaviour
     {
         movement.enabled = true;
         camera.SetActive(true);
+        Sway weaponSway = GetComponentInChildren<Sway>(true);
+        if(weaponSway != null)
+        weaponSway.enabled = true;
+
     }
 
 

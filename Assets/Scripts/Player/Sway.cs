@@ -13,6 +13,7 @@ public class Sway : MonoBehaviour
     private void Start()
     {
         origin = transform.position;
+        enabled = false;
     }
 
     private void Update()
