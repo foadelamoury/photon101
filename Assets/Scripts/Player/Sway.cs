@@ -12,10 +12,9 @@ public class Sway : MonoBehaviour
 
     private void Start()
     {
-        origin = transform.position;
+        origin = transform.localPosition; // Changed from transform.position
         enabled = false;
     }
-
     private void Update()
     {
         Vector2 input = new Vector2(Input.GetAxisRaw("Mouse X"),Input.GetAxisRaw("Mouse Y"));

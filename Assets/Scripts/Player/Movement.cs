@@ -78,15 +78,14 @@ public class Movement : MonoBehaviour
 
             else
             {
-                Vector3 velocity1 = rb.linearVelocity;
-                velocity1 = new Vector3(
-                    velocity1.x * 0.2f, // Remove Time.fixedDeltaTime
-                    velocity1.y,
-                    velocity1.z * 0.2f
+                // FIX: Proper velocity damping
+                Vector3 velocity = rb.linearVelocity;
+                velocity = new Vector3(
+                    velocity.x * (1 - 5f * Time.fixedDeltaTime),
+                    velocity.y,
+                    velocity.z * (1 - 5f * Time.fixedDeltaTime)
                 );
-
-                rb.linearVelocity = velocity1;
-
+                rb.linearVelocity = velocity;
             }
         }
         grounded = false;

@@ -2,10 +2,10 @@ using Photon.Pun;
 using System;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviourPunCallbacks
 {
 
-    public Camera camera;
+    public new Camera camera;
 
     public int damage;
 
@@ -15,6 +15,14 @@ public class Weapon : MonoBehaviour
 
     [Header("VFX")]
     public GameObject hitVFX;
+
+    private PhotonView photonView;
+
+    private void Start()
+    {
+        photonView = GetComponentInParent<PhotonView>();
+
+    }
 
     void Update()
     {
@@ -32,8 +40,10 @@ public class Weapon : MonoBehaviour
 
     private void Fire()
     {
-        Ray ray = new Ray(camera.transform.position, camera.transform.forward);
+        // Add ownership check
+        if (!photonView.IsMine) return;
 
+        Ray ray = new Ray(camera.transform.position, camera.transform.forward);
         RaycastHit hit;
 
         if (Physics.Raycast(ray.origin, ray.direction, out hit, 100f))

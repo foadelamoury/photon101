@@ -2,28 +2,24 @@ using Photon.Pun;
 using UnityEngine;
 using TMPro;
 
-public class Health : MonoBehaviour
+[RequireComponent(typeof(PhotonView))] // Ensures PhotonView component exists
+public class Health : MonoBehaviourPun // Changed from MonoBehaviour to MonoBehaviourPun
 {
     public int health;
-
 
     [Header("UI")]
     public TextMeshProUGUI healthText;
 
-    private bool isLocalPlayer => photonView.IsMine;
-
     [PunRPC]
-    public void TakeDamage(int damageAmount) // Renamed to match Weapon's call
+    public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
         healthText.text = health.ToString();
 
-        if (health <= 0)
+        if (health <= 0 && photonView.IsMine)
         {
-            if (isLocalPlayer)
-                RoomManager.instance.SpawnPlayer();
-
-            PhotonNetwork.Destroy(gameObject); // Network-safe destruction
+            RoomManager.instance.SpawnPlayer();
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 }
